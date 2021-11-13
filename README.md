@@ -19,8 +19,9 @@ make
 sudo ./server
 ```
 - 開啟client
+
 在瀏覽器輸入網址`127.0.0.1`即可上傳檔案。
 
 **注意**：
-1. 僅支援firefox瀏覽器
+1. 僅支援firefox瀏覽器。
 2. 檔案僅可上傳文字檔 (`.txt`, `.csv`, `.html`, etc.)，不可上傳圖片檔 (`.png`, `.jpg`, `.jpeg`)。

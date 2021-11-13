@@ -172,26 +172,11 @@ void handleSocket(int fd) {
         content += 14;
         content = strstr(content, "\n");
         while(*content=='\r' || *content=='\n')   content++;
-        char c[50000];
-        int i = 0;
-        while (!(*content=='\n' && *(content+1)=='-' && *(content+2)=='-'&&*(content+3)=='-')) {
-        	c[i] = *content;
-        	i++, content++;
-        }
-        c[i-1] = '\0';
-        strcpy(content, &content[1]);
         
-        FILE *fp = fopen(filename, "wb");
-	fprintf(fp, "%s", c);
-	fclose(fp);
-	chmod(filename, 0777);
-	printf("Upload successful.\n");
-	serveStaticPage(fd, "/");
+        char *end_content = strstr(content, "---");
+        *end_content = 0;
         
-        //char *end_content = strstr(content, "---");
-        //*end_content = 0;
-        
-        //serveUploadFile(fd, filename, c);
+        serveUploadFile(fd, filename, content);
     }
     else 
         printf("send_400\n");
@@ -218,12 +203,6 @@ int main() {
             perror("accept() failed.\n");
             return 1;
         }
-
-        // Get client address
-        //char address_buf[100];
-        //getnameinfo((struct sockaddr *)&address, addrlen, address_buf, sizeof(address_buf), 0, 0, NI_NUMERICHOST);
-
-        //printf("New connection from %s.\n", address_buf);
 
         pid = fork();
         if (pid == 0) {  // In child
