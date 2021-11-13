@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+        
+        .content {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .btn-submit {
+            background-color: #1473E6;
+            color: #fff;
+            padding: 3px 25px 5px;
+            border: 0px;
+            height: 32px;
+            border-radius: 24px;
+            font-weight: bold;
+        }
+        
+        .btn-submit:hover {
+            background-color: #0d66d0;
+        }
+        
+        .pb-2 {
+            padding-bottom: 16px;
+        }
+        
+        .img {
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <img src="10cm.jpg" alt="10cm 3.0 album" class="img pb-2">
+        <form action="http://127.0.0.1/index.html" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="SUBMIT" class="btn-submit">
+        </form>
+    </div>
+</body>
+
+</html>
